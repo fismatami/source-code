@@ -1,31 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kelompok7;
 
-/**
- *
- * @author udev
- */
 public class Mahasiswa extends Orang{
-	private long nim;
+	private String nim;
 	private String kelas;
 	private int nilai;
 	
-	public Mahasiswa(String nama, long nim, String kelas, int nilai){
+	public Mahasiswa(String nama, String nim, String kelas, int nilai){
 		this.nama=nama;
 		this.nim=nim;
 		this.kelas=kelas;
 		this.nilai=nilai;
 	}
 	
-	public void setNim(long nim){
+	public void setNim(String nim){
 		this.nim=nim;
 	}
 	
-	public long setNim(){
+	public String getNim(){
 		return nim;
 	}
 	
