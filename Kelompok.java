@@ -1,25 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kelompok7;
 
-/**
- *
- * @author udev
- */
 public class Kelompok {
 	private Mahasiswa[] anggota;
 	private String jurusan;
 	private int noKelp;
-	private int maxAnggota=5;
+	private final int maxAnggota;
+        private Pembimbing pembimbing;
 	private int nAnggota=0;
         private Kelompok[] k;
-        private Pembimbing pembimbing;
         
-        public Kelompok(int noKelp, String Jurusan){
-            this.noKelp=noKelp;
+        
+        public Kelompok(int noKelp, String jur, Pembimbing pemb){
+        this.maxAnggota = 5;
+        this.anggota= new Mahasiswa[maxAnggota];
+        this.noKelp=noKelp;
+        this.pembimbing=pemb;
+        this.jurusan=jur;
+        }
+
+        public Pembimbing getPembimbing() {
+        return pembimbing;
+        }
+
+        public void setPembimbing(Pembimbing pembimbing) {
+        this.pembimbing = pembimbing;
         }
         
 	public void setJurusan(String jurusan) {
@@ -37,36 +41,31 @@ public class Kelompok {
 	public int getNoKelp() {
 		return noKelp;
 	}
-        
-        public void setPembimbing(int nip, String nama)
-	{
-		Pembimbing p=new Pembimbing(nip,nama);
-                
-	}
-
-        public Pembimbing getPembimbing() {
-            return pembimbing;
-        }
-        
 	
 	public void addAnggota(Mahasiswa m) {
 		if (nAnggota<maxAnggota){
-			this.anggota[nAnggota] = m;
-			nAnggota++;
-		}else{
+                    this.anggota[nAnggota] = m;
+                }else{
                     System.out.println("Mahasiswa Sudah Penuh");
                 }
+                nAnggota++;
 	}
 	
 	public void removeAnggota(Mahasiswa m){
+            boolean found = false;
                for(int i=0;i<=nAnggota;i++){
-                   if(anggota[i]==m){
+                   if(anggota[i].getNim().equals(m.getNim())){
+                       found = true;
+                       anggota[i]=anggota[nAnggota-1];
                        nAnggota--;
+                       break;
                    }
                }
 	}
-        
-        
-	
-	
+        public void displayKelompok(){
+            //System.out.println("Anggota:\n");
+           // for(int i=0; i < maxAnggota; i++){
+            System.out.println(" "+(0+1)+". "+anggota[0].getNim());
+         //}
+        }	
 }
